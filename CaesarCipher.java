@@ -45,11 +45,10 @@ class CaesarCipher {
 
 	// Driver code
 	public static void main(String[] args) {
+		// create a scanner object to read the user input
+		Scanner sc = new Scanner(System.in);
 		// write an infinite loop to keep the program running until the user exits
 		while (true) {
-			// create a scanner object to read the user input
-			Scanner sc = new Scanner(System.in);
-
 			// ask the user to enter the text to be encrypted
 			System.out.print("Enter the text to be encrypted: ");
 			String text = sc.nextLine();
@@ -80,5 +79,7 @@ class CaesarCipher {
 				break;
 			}
 		}
+
+		sc.close();
 	}
 }
