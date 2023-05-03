@@ -1,3 +1,5 @@
+package OneTimePadCipher;
+
 import java.util.Scanner;
 
 class OneTimePadCipher {
@@ -18,10 +20,8 @@ class OneTimePadCipher {
       cipherTextInt[i] = (plainTextInt[i] + keyInt[i]) % ALPHABET_SIZE;
     }
 
-    // Convert to string
-    String cipherText = numberToText(cipherTextInt);
-
-    return cipherText;
+    // Convert to string and return
+    return numberToText(cipherTextInt);
   }
 
   public static String decrypt(String cipherText, String key) {
@@ -39,10 +39,8 @@ class OneTimePadCipher {
       plainTextInt[i] = (cipherTextInt[i] - keyInt[i] + ALPHABET_SIZE) % ALPHABET_SIZE;
     }
 
-    // Convert to string
-    String plainText = numberToText(plainTextInt);
-
-    return plainText;
+    // Convert to string and return
+    return numberToText(plainTextInt);
   }
 
   public static int[] textToNumber(String text) {

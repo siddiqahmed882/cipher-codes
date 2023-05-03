@@ -1,3 +1,5 @@
+package VigenereCipher;
+
 import java.util.Scanner;
 
 class VigenereCipher {

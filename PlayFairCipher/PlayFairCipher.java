@@ -1,3 +1,5 @@
+package PlayFairCipher;
+
 import java.util.*;
 
 class PlayFairCipher {

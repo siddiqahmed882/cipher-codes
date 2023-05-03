@@ -1,3 +1,5 @@
+package CaesarCipher;
+
 import java.util.Scanner;
 
 class CaesarCipher {
@@ -71,7 +73,7 @@ class CaesarCipher {
 
 			// ask the user if they want to continue
 			System.out.print("Do you want to continue? (Y/N) :");
-			String choice = sc.next();
+			String choice = sc.nextLine();
 
 			// if the user enters N or n, exit the program
 			if (choice.equals("N") || choice.equals("n")) {
