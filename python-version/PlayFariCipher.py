@@ -131,23 +131,27 @@ def encryptByPlayfairCipher(Matrix, plainList):
 		cipher = c1 + c2
 		CipherText.append(cipher)
 	return CipherText
+while True:
+	text_Plain = input("Enter the plain text: ")
+	text_Plain = removeSpaces(toLowerCase(text_Plain))
+	PlainTextList = Diagraph(FillerLetter(text_Plain))
+	if len(PlainTextList[-1]) != 2:
+		PlainTextList[-1] = PlainTextList[-1]+'z'
 
-text_Plain = 'instruments'
-text_Plain = removeSpaces(toLowerCase(text_Plain))
-PlainTextList = Diagraph(FillerLetter(text_Plain))
-if len(PlainTextList[-1]) != 2:
-	PlainTextList[-1] = PlainTextList[-1]+'z'
+	key = input("Enter the key: ")
+	print("Key text:", key)
+	key = toLowerCase(key)
+	Matrix = generateKeyTable(key, list1)
 
-key = "Monarchy"
-print("Key text:", key)
-key = toLowerCase(key)
-Matrix = generateKeyTable(key, list1)
+	print("Plain Text:", text_Plain)
+	CipherList = encryptByPlayfairCipher(Matrix, PlainTextList)
 
-print("Plain Text:", text_Plain)
-CipherList = encryptByPlayfairCipher(Matrix, PlainTextList)
+	CipherText = ""
+	for i in CipherList:
+		CipherText += i
+	print("CipherText:", CipherText)
 
-CipherText = ""
-for i in CipherList:
-	CipherText += i
-print("CipherText:", CipherText)
+	choice = input("Do you want to continue? (y/n): ")
+	if choice == 'n' or choice == 'N':
+		break
 

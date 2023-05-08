@@ -1,61 +1,47 @@
-ALPHABET_SIZE = 26
+import random
 
-def encrypt(plainText, key):
-    # Convert to lowercase
-    plainText = plainText.lower()
-    key = key.lower()
+ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
 
-    # Convert to int array
-    plainTextInt = text_to_number(plainText)
-    keyInt = text_to_number(key)
+def generate_key(length):
+    """Generate a random key of specified length."""
+    key = ''
+    for i in range(length):
+        key += random.choice(ALPHABET)
+    return key
 
-    # Add key to plain text and mod by alphabet size
-    cipherTextInt = [(plainTextInt[i] + keyInt[i]) % ALPHABET_SIZE for i in range(len(plainTextInt))]
+def encrypt(plain_text, key):
+    """Encrypt the plain text using the specified key."""
+    cipher_text = ''
+    for i in range(len(plain_text)):
+        p = ALPHABET.index(plain_text[i])
+        k = ALPHABET.index(key[i])
+        c = (p + k) % 26
+        cipher_text += ALPHABET[c]
+    return cipher_text
 
-    # Convert to string and return
-    return number_to_text(cipherTextInt)
+def decrypt(cipher_text, key):
+    """Decrypt the cipher text using the specified key."""
+    plain_text = ''
+    for i in range(len(cipher_text)):
+        c = ALPHABET.index(cipher_text[i])
+        k = ALPHABET.index(key[i])
+        p = (c - k) % 26
+        plain_text += ALPHABET[p]
+    return plain_text
 
-def decrypt(cipherText, key):
-    # Convert to lowercase
-    cipherText = cipherText.lower()
-    key = key.lower()
-
-    # Convert to int array
-    cipherTextInt = text_to_number(cipherText)
-    keyInt = text_to_number(key)
-
-    # Subtract key from cipher text and mod by alphabet size
-    plainTextInt = [(cipherTextInt[i] - keyInt[i] + ALPHABET_SIZE) % ALPHABET_SIZE for i in range(len(cipherTextInt))]
-
-    # Convert to string and return
-    return number_to_text(plainTextInt)
-
-def text_to_number(text):
-    textInt = [ord(c) - ord('a') for c in text]
-    return textInt
-
-def number_to_text(number):
-    text = "".join(chr(i + ord('a')) for i in number)
-    return text
 
 while True:
     # ask the user to enter the text to be encrypted
     plainText = input("Enter plain text: ").replace(" ", "")
 
-    key = ""
-    while True:
-        # ask the user to enter the key
-        key = input("Enter key: ").replace(" ", "")
+    # generate a key of the same length as plain text
+    key = generate_key(len(plainText))
 
-        # check if the key is valid
-        if len(key) == len(plainText):
-            break
-        else:
-            print("Key length must be equal to plain text length")
-
+    # encrypt the plain text using the key
     cipherText = encrypt(plainText, key)
     print("Cipher text: " + cipherText)
 
+    # decrypt the cipher text using the key
     decryptedText = decrypt(cipherText, key)
     print("Decrypted text: " + decryptedText)
 
