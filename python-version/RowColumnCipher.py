@@ -80,6 +80,7 @@ class RowColumnCipher:
 			msg = ''.join(sum(dec_cipher, []))
 		except TypeError:
 			raise TypeError("This program cannot", "handle repeating words.")
+		
 		null_count = msg.count('_')
 		if null_count > 0:
 			return msg[: -null_count]

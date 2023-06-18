@@ -49,38 +49,25 @@ class CaesarCipher {
 	public static void main(String[] args) {
 		// create a scanner object to read the user input
 		Scanner sc = new Scanner(System.in);
-		// write an infinite loop to keep the program running until the user exits
-		while (true) {
-			// ask the user to enter the text to be encrypted
-			System.out.print("Enter the text to be encrypted: ");
-			String text = sc.nextLine();
 
-			// ask the user to enter the shift value
-			System.out.print("Enter the shift value: ");
-			int shift = sc.nextInt();
+		System.out.print("Enter the text to be encrypted: ");
+		String text = sc.nextLine();
 
-			// encrypt the text
-			String encryptedText = encrypt(text, shift).toString();
+		// ask the user to enter the shift value
+		System.out.print("Enter the shift value: ");
+		int shift = sc.nextInt();
 
-			// decrypt the text
-			String decryptedText = decrypt(encryptedText, shift).toString();
+		// encrypt the text
+		String encryptedText = encrypt(text, shift).toString();
 
-			// print the encrypted text
-			System.out.println("Encrypted text: " + encryptedText);
+		// decrypt the text
+		String decryptedText = decrypt(encryptedText, shift).toString();
 
-			// print the decrypted text
-			System.out.println("Decrypted text: " + decryptedText);
+		// print the encrypted text
+		System.out.println("Encrypted text: " + encryptedText);
 
-			// ask the user if they want to continue
-			System.out.print("Do you want to continue? (Y/N) :");
-			String choice = sc.nextLine();
-
-			// if the user enters N or n, exit the program
-			if (choice.equals("N") || choice.equals("n")) {
-				System.out.println("Exiting...");
-				break;
-			}
-		}
+		// print the decrypted text
+		System.out.println("Decrypted text: " + decryptedText);
 
 		sc.close();
 	}

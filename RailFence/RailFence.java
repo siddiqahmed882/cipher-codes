@@ -85,30 +85,18 @@ public class RailFence {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
-    // infinite loop to keep the program running until the user exits
-    while (true) {
+    System.out.print("Enter your message: ");
+    String msg = sc.nextLine();
+    msg = msg.replaceAll(" ", "");
 
-      System.out.print("Enter your message: ");
-      String msg = sc.nextLine();
-      msg = msg.replace(" ", "");
+    System.out.print("Enter your key: ");
+    int key = Integer.parseInt(sc.nextLine());
 
-      System.out.print("Enter your key: ");
-      int key = sc.nextInt();
+    String cipher = encryptMessage(msg, key);
+    System.out.println("Encrypted message: " + cipher);
 
-      String cipher = encryptMessage(msg, key);
-      System.out.println("Encrypted message: " + cipher);
-
-      String decryptedMsg = decryptMessage(cipher, key);
-      System.out.println("Decrypted message: " + decryptedMsg);
-
-      System.out.print("Do you want to continue? (y/n)");
-      String cont = sc.nextLine();
-
-      if (cont.equals("n")) {
-        System.out.println("Exiting...");
-        break;
-      }
-    }
+    String decryptedMsg = decryptMessage(cipher, key);
+    System.out.println("Decrypted message: " + decryptedMsg);
 
     sc.close();
   }

@@ -112,24 +112,16 @@ public class RowColumnCipher {
   public static void main(String[] args) {
     // infinte loop to keep program running
     Scanner sc = new Scanner(System.in);
-    while (true) {
-      System.out.print("Enter your message: ");
-      String msg = sc.nextLine();
-      msg = msg.replace(" ", "");
-      System.out.print("Enter your key: ");
-      String key = sc.nextLine();
-      String cipher = encryptMessage(msg, key);
-      System.out.println("Encrypted message: " + cipher);
-      String decryptedMsg = decryptMessage(cipher, key);
-      System.out.println("Decrypted message: " + decryptedMsg);
+    System.out.print("Enter your message: ");
+    String msg = sc.nextLine();
+    msg = msg.replace(" ", "");
+    System.out.print("Enter your key: ");
+    String key = sc.nextLine();
+    String cipher = encryptMessage(msg, key);
+    System.out.println("Encrypted message: " + cipher);
+    String decryptedMsg = decryptMessage(cipher, key);
+    System.out.println("Decrypted message: " + decryptedMsg);
 
-      System.out.print("Do you want to continue? (y/n)");
-      String cont = sc.nextLine();
-      if (cont.equals("n")) {
-        System.out.println("Exiting...");
-        break;
-      }
-    }
     sc.close();
   }
 }
